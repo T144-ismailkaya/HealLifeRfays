@@ -39,7 +39,6 @@ jobs:
           fi
 
       - name: Çatışma Yoksa Push Yap
-        if: steps.conflict_check.outputs.conflict == 'false'
         run: |
           git commit -m "Otomatik merge: ismail'den main'e"
           git push origin main
