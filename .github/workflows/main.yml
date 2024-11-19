@@ -1,0 +1,31 @@
+name: Otomatik Konfliktsiz Merge ve Push
+
+on:
+  push:
+    branches:
+      - main # Belirtilen branşta bir push olduğunda bu eylem çalışacak
+
+jobs:
+  check_conflicts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code'u Al
+        uses: actions/checkout@v3
+        
+      - name: Git'i Kur
+        run: |
+          git config --global user.name "Adınız"
+          git config --global user.email "adresiniz@example.com"
+          
+      - name: Merge Check
+        run: |
+          git fetch origin main
+          git checkout main
+          git pull origin main
+          git merge --no-commit --no-ff origin/main
+          git status
+          
+      - name: Push if No Conflicts
+        if: success() && steps.check_conflicts.outputs.conflicts == 'false'
+        run: |
+          git push origin main
