@@ -8,3 +8,5 @@ Feature: Bu test Feature calismasi icin yazildi
     * Kullanıcı browser kapatır
     # Yazılanı burada ekleyebilirsiniz.
   # Yazılanı burada ekleyebilirsiniz.
+  # Yazılanı burada ekleyebilirsiniz.
+  # Yazılanı burada ekleyebilirsiniz.
