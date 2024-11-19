@@ -3,7 +3,7 @@ name: Otomatik Konfliktsiz Merge ve Push
 on:
   push:
     branches:
-      - main # Belirtilen branşta bir push olduğunda bu eylem çalışacak
+      - ismail
 
 jobs:
   check_conflicts:
