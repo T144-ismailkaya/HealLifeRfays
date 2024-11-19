@@ -33,18 +33,19 @@ jobs:
         id: conflict_check
         run: |
           if [ -f conflict_detected.txt ]; then
-            echo "::set-output name=conflict::true"
+            echo "conflict=true" >> $GITHUB_ENV
           else
-            echo "::set-output name=conflict::false"
+            echo "conflict=false" >> $GITHUB_ENV
           fi
 
       - name: Çatışma Yoksa Push Yap
-        if: steps.conflict_check.outputs.conflict == 'false'
+        if: env.conflict == 'false'
         run: |
           git commit -m "Otomatik merge: ismail'den main'e"
           git push origin main
 
       - name: Çatışma Tespit Edildi
-        if: steps.conflict_check.outputs.conflict == 'true'
+        if: env.conflict == 'true'
         run: |
           echo "Çatışma tespit edildi, işlem durduruldu."
+
