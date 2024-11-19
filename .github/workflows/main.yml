@@ -3,49 +3,27 @@ name: Otomatik Konfliktsiz Merge ve Push
 on:
   push:
     branches:
-      - ismail # "ismail" branşına push olduğunda bu iş akışı çalışır
+      - ismail # "ismail" branşına push olduğunda çalışır
 
 jobs:
-  check_conflicts:
+  merge_and_push:
     runs-on: ubuntu-latest
     steps:
       - name: Code'u Al
         uses: actions/checkout@v3
-        
+
       - name: Git'i Kur
         run: |
-          git config --global user.name "Adınız"
-          git config --global user.email "adresiniz@example.com"
+          git config --global user.name "Otomatik Merge Bot"
+          git config --global user.email "bot@example.com"
 
       - name: Main'i Fetch Et
-        run: |
-          git fetch origin main
+        run: git fetch origin main
 
-      - name: Merge Testi Yap
-        id: merge_check
+      - name: Main ile Merge ve Push
         run: |
           git checkout main
           git pull origin main
-          git merge --no-commit --no-ff origin/ismail || echo "conflict" > conflict_detected.txt
-        continue-on-error: true
-
-      - name: Çatışma Var mı?
-        id: conflict_check
-        run: |
-          if [ -f conflict_detected.txt ]; then
-            echo "conflict=true" >> $GITHUB_ENV
-          else
-            echo "conflict=false" >> $GITHUB_ENV
-          fi
-
-      - name: Çatışma Yoksa Push Yap
-        if: env.conflict == 'false'
-        run: |
+          git merge origin/ismail
           git commit -m "Otomatik merge: ismail'den main'e"
           git push origin main
-
-      - name: Çatışma Tespit Edildi
-        if: env.conflict == 'true'
-        run: |
-          echo "Çatışma tespit edildi, işlem durduruldu."
-
