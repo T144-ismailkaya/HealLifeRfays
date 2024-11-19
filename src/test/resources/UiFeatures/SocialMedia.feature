@@ -10,3 +10,5 @@ Feature: Bu test Feature calismasi icin yazildi
   # Yazılanı burada ekleyebilirsiniz.
   # Yazılanı burada ekleyebilirsiniz.
   # Yazılanı burada ekleyebilirsiniz.
+  # Yazılanı burada ekleyebilirsiniz.
+  # Yazılanı burada ekleyebilirsiniz.
