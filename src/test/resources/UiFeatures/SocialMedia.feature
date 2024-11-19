@@ -4,6 +4,7 @@ Feature: Bu test Feature calismasi icin yazildi
 
     * Kullanıcı "HLurl" sayfasına gider
     * Kullanıcı sayfanın footer bölümüne gider
-    # Bu bir yorum satırıdır
     * Kullanıcı Sosyal Medya liklerinin doğru sayfaya gittiğini doğrular
     * Kullanıcı browser kapatır
+    # Yazılanı burada ekleyebilirsiniz.
+  # Yazılanı burada ekleyebilirsiniz.
